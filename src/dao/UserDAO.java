@@ -17,7 +17,7 @@ public class UserDAO {
     /**
      * 
      * @param user
-     * @return 
+     * @return true if exactly one row was inserted into the users table false if no row has inserted or an SQL error happened
      */
     public boolean registerUser(User user) {
         String sql = "INSERT INTO users (username, password) VALUES (?, ?)";
@@ -37,7 +37,7 @@ public class UserDAO {
     /**
      * 
      * @param username
-     * @return 
+     * @return a fully populated User object if a matching record is real null if no record is found or if a database error occurs
      */
     public User findByUsername(String username) {
         String sql = "SELECT * FROM users WHERE username = ?";
