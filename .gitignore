@@ -22,3 +22,22 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+# NetBeans project private config (DO NOT COMMIT)
+nbproject/private/
+
+# Generated build files
+nbproject/build-impl.xml
+nbproject/genfiles.properties
+
+build/
+dist/
+
+# *.war
+# *.ear
+# *.zip
+# *.tar.gz
+# *.rar
+
+.DS_Store
+Thumbs.db
