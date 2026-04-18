@@ -13,18 +13,11 @@ import java.sql.SQLException;
  * @author ry
  */
 public class DBConnection {
-    
-    private static final String URL = "";
-    private static final String USER = "";
-    private static final String PASSWORD = "";
-    
-    /**
-     * 
-     * @return Connection
-     * @throws SQLException 
-     */
+    private static final String URL = "jdbc:mysql://localhost:3306/image_gallery_db";
+    private static final String USER = "imagegalleryplaceholder";
+    private static final String PASSWORD = "password123?";
+ 
     public static Connection getConnection() throws SQLException {
-        System.out.println("Connection Established");
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 }
