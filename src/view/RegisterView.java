@@ -20,20 +20,20 @@ import javax.swing.JTextField;
  * @author ry
  */
 public class RegisterView extends JFrame {
- 
+
     private JLabel jlTitle, jlUsername, jlPassword;
     private JTextField jtxtUsername;
     private JPasswordField jtxtPassword;
     private JButton jbRegister, jbBack;
- 
+
     public RegisterView() {
         initComponents();
     }
- 
+
     private void initComponents() {
         setTitle("Create Account");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
- 
+
         jlTitle = new JLabel("Create Account");
         jlUsername = new JLabel("Username:");
         jlPassword = new JLabel("Password:");
@@ -41,11 +41,11 @@ public class RegisterView extends JFrame {
         jtxtPassword = new JPasswordField(20);
         jbRegister = new JButton("Register");
         jbBack = new JButton("Back to Login");
- 
+
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
- 
+
         panel.add(jlTitle);
         panel.add(Box.createVerticalStrut(10));
         panel.add(jlUsername);
@@ -56,12 +56,12 @@ public class RegisterView extends JFrame {
         panel.add(jbRegister);
         panel.add(Box.createVerticalStrut(5));
         panel.add(jbBack);
- 
+
         add(panel);
         pack();
         setLocationRelativeTo(null);
     }
- 
+
     /**
      * 
      * @param listener 
@@ -69,7 +69,7 @@ public class RegisterView extends JFrame {
     public void addRegisterListener(ActionListener listener) {
         jbRegister.addActionListener(listener);
     }
- 
+
     /**
      * 
      * @param listener 
@@ -77,7 +77,7 @@ public class RegisterView extends JFrame {
     public void addBackListener(ActionListener listener) {
         jbBack.addActionListener(listener);
     }
- 
+
     /**
      * 
      * @return jtxtUsername.getText();
@@ -85,7 +85,7 @@ public class RegisterView extends JFrame {
     public String getUsername() {
         return jtxtUsername.getText();
     }
- 
+
     /**
      * 
      * @return String(jtxtPassword.getPassword())
@@ -93,7 +93,7 @@ public class RegisterView extends JFrame {
     public String getPassword() {
         return new String(jtxtPassword.getPassword());
     }
- 
+
     public void clearFields() {
         jtxtUsername.setText("");
         jtxtPassword.setText("");

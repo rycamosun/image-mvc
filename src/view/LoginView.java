@@ -20,7 +20,7 @@ import javax.swing.JTextField;
  * @author ry
  */
 public class LoginView extends JFrame {
- 
+
     private JLabel jlTitle, jlUsername, jlPassword;
     private JTextField jtxtUsername;
     private JPasswordField jtxtPassword;
@@ -29,11 +29,11 @@ public class LoginView extends JFrame {
     public LoginView() {
         initComponents();
     }
- 
+
     private void initComponents() {
         setTitle("Login");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
- 
+
         jlTitle = new JLabel("Login");
         jlUsername = new JLabel("Username:");
         jlPassword = new JLabel("Password:");
@@ -41,11 +41,11 @@ public class LoginView extends JFrame {
         jtxtPassword = new JPasswordField(20);
         jbLogin = new JButton("Login");
         jbGoRegister = new JButton("Create Account");
- 
+
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
- 
+
         panel.add(jlTitle);
         panel.add(Box.createVerticalStrut(10));
         panel.add(jlUsername);
@@ -56,12 +56,12 @@ public class LoginView extends JFrame {
         panel.add(jbLogin);
         panel.add(Box.createVerticalStrut(5));
         panel.add(jbGoRegister);
- 
+
         add(panel);
         pack();
         setLocationRelativeTo(null);
     }
- 
+
     /**
      * 
      * @param listener 
@@ -69,7 +69,7 @@ public class LoginView extends JFrame {
     public void addLoginListener(ActionListener listener) {
         jbLogin.addActionListener(listener);
     }
- 
+
     /**
      * 
      * @param listener 
@@ -77,7 +77,7 @@ public class LoginView extends JFrame {
     public void addGoRegisterListener(ActionListener listener) {
         jbGoRegister.addActionListener(listener);
     }
- 
+
     /**
      * 
      * @return jtxtUsername.getText();
@@ -85,15 +85,15 @@ public class LoginView extends JFrame {
     public String getUsername() {
         return jtxtUsername.getText();
     }
- 
+
     /**
      * 
      * @return String(jtxtPassword.getPassword())
      */
-    public String getPassword() { 
+    public String getPassword() {
         return new String(jtxtPassword.getPassword());
     }
- 
+
     public void clearFields() {
         jtxtUsername.setText("");
         jtxtPassword.setText("");

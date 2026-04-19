@@ -9,13 +9,13 @@ package model;
  * @author ry
  */
 public class User {
-    
+
     private int userId;
     private String username;
     private String password;
-    
+
     public User() {}
-    
+
     /**
      * 
      * @param userId
@@ -27,7 +27,7 @@ public class User {
         this.username = username;
         this.password = password;
     }
-    
+
     /**
      * 
      * @return userId
@@ -59,7 +59,7 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
-    
+
     /**
      * 
      * @return password

@@ -9,15 +9,15 @@ package model;
  * @author ry
  */
 public class Image {
-    
+
     private int imageId;
     private int userId;
     private String fileName;
     private String filePath;
     private String uploadedAt;
- 
+
     public Image() {}
- 
+
     /**
      * 
      * @param imageId
@@ -33,7 +33,7 @@ public class Image {
         this.filePath = filePath;
         this.uploadedAt = uploadedAt;
     }
-    
+
     /**
      * 
      * @return imageId
@@ -41,7 +41,7 @@ public class Image {
     public int getImageId() {
         return imageId;
     }
-    
+
     /**
      * 
      * @param imageId 

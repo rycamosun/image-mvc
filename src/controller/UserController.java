@@ -18,11 +18,11 @@ import view.GalleryView;
  * @author ry
  */
 public class UserController {
- 
+
     private final UserDAO userDAO;
     private final LoginView loginView;
     private final RegisterView registerView;
- 
+
     /**
      * 
      * @param loginView
@@ -32,38 +32,38 @@ public class UserController {
         this.userDAO = new UserDAO();
         this.loginView = loginView;
         this.registerView = registerView;
- 
+
         loginView.addLoginListener(new LoginAction());
         loginView.addGoRegisterListener(new GoRegisterAction());
         registerView.addRegisterListener(new RegisterAction());
         registerView.addBackListener(new BackToLoginAction());
     }
- 
+
     class LoginAction implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             String username = loginView.getUsername();
             String password = loginView.getPassword();
- 
+
             if (username.isEmpty() || password.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Please enter username and password.");
                 return;
             }
- 
+
             User user = userDAO.findByUsername(username);
- 
+
             if (user == null || !user.getPassword().equals(password)) {
                 JOptionPane.showMessageDialog(null, "Invalid username or password.");
                 return;
             }
- 
+
             loginView.dispose();
             GalleryView galleryView = new GalleryView(user.getUsername());
             new ImageController(galleryView, user);
             galleryView.setVisible(true);
         }
     }
- 
+
     class GoRegisterAction implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -71,22 +71,22 @@ public class UserController {
             registerView.setVisible(true);
         }
     }
- 
+
     class RegisterAction implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             String username = registerView.getUsername();
             String password = registerView.getPassword();
- 
+
             if (username.isEmpty() || password.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Please fill in all fields.");
                 return;
             }
- 
+
             User user = new User();
             user.setUsername(username);
             user.setPassword(password);
- 
+
             if (userDAO.registerUser(user)) {
                 JOptionPane.showMessageDialog(null, "Account created! Please log in.");
                 registerView.clearFields();
@@ -97,7 +97,7 @@ public class UserController {
             }
         }
     }
- 
+
     class BackToLoginAction implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -106,4 +106,3 @@ public class UserController {
         }
     }
 }
- 

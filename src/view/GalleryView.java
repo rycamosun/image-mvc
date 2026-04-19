@@ -25,11 +25,11 @@ import model.Image;
  * @author ry
  */
 public class GalleryView extends JFrame {
- 
+
     private JButton jbUpload;
     private JPanel galleryPanel;
     private JScrollPane scrollPane;
- 
+
     /**
      * 
      * @param username 
@@ -37,29 +37,29 @@ public class GalleryView extends JFrame {
     public GalleryView(String username) {
         initComponents(username);
     }
- 
+
     private void initComponents(String username) {
         setTitle("Gallery - " + username);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(700, 500);
         setLocationRelativeTo(null);
- 
+
         jbUpload = new JButton("+ Upload Image");
- 
+
         JPanel topBar = new JPanel(new FlowLayout(FlowLayout.LEFT));
         topBar.add(jbUpload);
- 
+
         galleryPanel = new JPanel(new GridLayout(0, 3, 10, 10));
         galleryPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
- 
+
         scrollPane = new JScrollPane(galleryPanel);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
- 
+
         setLayout(new BorderLayout());
         add(topBar, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
     }
- 
+
     /**
      * 
      * @param listener 
@@ -67,20 +67,20 @@ public class GalleryView extends JFrame {
     public void addUploadListener(ActionListener listener) {
         jbUpload.addActionListener(listener);
     }
- 
+
     /**
      * 
      * @param images 
      */
-    public void displayImages(List<Image> images) {
+    public void displayImages(List < Image > images) {
         galleryPanel.removeAll();
- 
-        for (Image img : images) {
+
+        for (Image img: images) {
             JLabel thumb = new JLabel();
             thumb.setPreferredSize(new Dimension(150, 150));
             thumb.setHorizontalAlignment(JLabel.CENTER);
             thumb.setBorder(BorderFactory.createLineBorder(Color.GRAY));
- 
+
             try {
                 ImageIcon icon = new ImageIcon(img.getFilePath());
                 java.awt.Image scaled = icon.getImage().getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH);
@@ -88,13 +88,12 @@ public class GalleryView extends JFrame {
             } catch (Exception e) {
                 thumb.setText(img.getFileName());
             }
- 
+
             thumb.setToolTipText(img.getFileName());
             galleryPanel.add(thumb);
         }
- 
+
         galleryPanel.revalidate();
         galleryPanel.repaint();
     }
 }
- 

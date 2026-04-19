@@ -15,7 +15,7 @@ import java.util.List;
  * @author ry
  */
 public class ImageDAO {
- 
+
     /**
      * 
      * @param image
@@ -23,31 +23,29 @@ public class ImageDAO {
      */
     public boolean saveImage(Image image) {
         String sql = "INSERT INTO images (user_id, file_name, file_path) VALUES (?, ?, ?)";
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
- 
+        try (Connection conn = DBConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+
             ps.setInt(1, image.getUserId());
             ps.setString(2, image.getFileName());
             ps.setString(3, image.getFilePath());
             return ps.executeUpdate() > 0;
- 
+
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
     }
- 
+
     /**
      * 
      * @param userId
      * @return list of images objects empty list if none are found or if a database error occurs
      */
-    public List<Image> getImagesByUser(int userId) {
-        List<Image> images = new ArrayList<>();
+    public List < Image > getImagesByUser(int userId) {
+        List < Image > images = new ArrayList < > ();
         String sql = "SELECT * FROM images WHERE user_id = ? ORDER BY uploaded_at DESC";
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
- 
+        try (Connection conn = DBConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+
             ps.setInt(1, userId);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -59,13 +57,13 @@ public class ImageDAO {
                 image.setUploadedAt(rs.getString("uploaded_at"));
                 images.add(image);
             }
- 
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return images;
     }
- 
+
     /**
      * 
      * @param imageId
@@ -73,12 +71,11 @@ public class ImageDAO {
      */
     public boolean deleteImage(int imageId) {
         String sql = "DELETE FROM images WHERE id = ?";
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
- 
+        try (Connection conn = DBConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+
             ps.setInt(1, imageId);
             return ps.executeUpdate() > 0;
- 
+
         } catch (SQLException e) {
             e.printStackTrace();
             return false;

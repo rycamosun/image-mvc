@@ -13,7 +13,7 @@ import java.sql.*;
  * @author ry
  */
 public class UserDAO {
-    
+
     /**
      * 
      * @param user
@@ -21,19 +21,18 @@ public class UserDAO {
      */
     public boolean registerUser(User user) {
         String sql = "INSERT INTO users (username, password) VALUES (?, ?)";
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
- 
+        try (Connection conn = DBConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+
             ps.setString(1, user.getUsername());
             ps.setString(2, user.getPassword());
             return ps.executeUpdate() > 0;
- 
+
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
     }
-    
+
     /**
      * 
      * @param username
@@ -41,9 +40,8 @@ public class UserDAO {
      */
     public User findByUsername(String username) {
         String sql = "SELECT * FROM users WHERE username = ?";
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
- 
+        try (Connection conn = DBConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+
             ps.setString(1, username);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -53,7 +51,7 @@ public class UserDAO {
                 user.setPassword(rs.getString("password"));
                 return user;
             }
- 
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -15,7 +15,7 @@ import controller.UserController;
 public class Main {
     public static void main(String[] args) {
         javax.swing.SwingUtilities.invokeLater(() -> {
-            LoginView loginView       = new LoginView();
+            LoginView loginView = new LoginView();
             RegisterView registerView = new RegisterView();
             new UserController(loginView, registerView);
             loginView.setVisible(true);
