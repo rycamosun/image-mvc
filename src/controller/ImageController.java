@@ -69,7 +69,6 @@ public class ImageController {
             try {
                 Files.copy(selectedFile.toPath(), destination, StandardCopyOption.REPLACE_EXISTING);
             } catch (IOException ex) {
-                JOptionPane.showMessageDialog(null, "Failed to copy image: " + ex.getMessage());
                 return;
             }
 
@@ -81,7 +80,6 @@ public class ImageController {
             if (imageDAO.saveImage(image)) {
                 refreshGallery();
             } else {
-                JOptionPane.showMessageDialog(null, "Failed to save image to database.");
             }
         }
     }

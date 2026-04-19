@@ -7,7 +7,6 @@ package controller;
 import dao.UserDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JOptionPane;
 import model.User;
 import view.LoginView;
 import view.RegisterView;
@@ -46,14 +45,12 @@ public class UserController {
             String password = loginView.getPassword();
 
             if (username.isEmpty() || password.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Please enter username and password.");
                 return;
             }
 
             User user = userDAO.findByUsername(username);
 
             if (user == null || !user.getPassword().equals(password)) {
-                JOptionPane.showMessageDialog(null, "Invalid username or password.");
                 return;
             }
 
@@ -79,7 +76,6 @@ public class UserController {
             String password = registerView.getPassword();
 
             if (username.isEmpty() || password.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Please fill in all fields.");
                 return;
             }
 
@@ -88,12 +84,10 @@ public class UserController {
             user.setPassword(password);
 
             if (userDAO.registerUser(user)) {
-                JOptionPane.showMessageDialog(null, "Account created! Please log in.");
                 registerView.clearFields();
                 registerView.setVisible(false);
                 loginView.setVisible(true);
             } else {
-                JOptionPane.showMessageDialog(null, "Registration failed. Username may already exist.");
             }
         }
     }
