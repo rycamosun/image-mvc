@@ -29,5 +29,7 @@ jobs:
       with:
         java-version: '21'
         distribution: 'temurin'
-    - name: Build with Ant
+    - name: MySql
+      run: mkdir -p lib && curl -L -o lib/mysql-connector-j.jar https://repo1.maven.org/maven2/com/mysql/mysql-connector-j/9.6.0/mysql-connector-j-9.6.0.jar
+    - name: Ant
       run: ant -noinput -buildfile build.xml
